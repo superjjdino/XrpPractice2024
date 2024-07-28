@@ -16,11 +16,18 @@ public class RobotContainer {
     private static Arm arm;
     private static XRPDrivetrain drivetrain;
 
-    private XboxController xboxController = new XboxController(XBOX_CONTROLLER_PORT);
+    private static CommandXboxController xboxController;
 
+
+    
+    public static void initialize(){
+        arm = Arm.getInstance();
+        xboxController = new CommandXboxController(XBOX_CONTROLLER_PORT);
+    }
     //I think I need an initialization of the classes with getinstance or whatever.
 public RobotContainer(){
-    arm.setDefaultCommand(null);
+    //way to set the angle
+    xboxController.a().onTrue(new ArmCommand(135));
 
 
 }

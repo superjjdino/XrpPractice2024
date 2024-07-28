@@ -22,13 +22,20 @@ public class Arm extends SubsystemBase {
     public void setArmVelocity(DoubleSupplier velocity){
         // armServo.
     }
+    //do I need 
 
-    public void setAngle(DoubleSupplier angle){
-        armServo.setAngle(135);
+    public void setAngle(double angle){
+        armServo.setAngle(angle);
         
     }
 
+    public static Arm getInstance(){
+        if (arm==null){
+            arm = new Arm();
 
+        }
+        return arm;
+    }
 
 
 
