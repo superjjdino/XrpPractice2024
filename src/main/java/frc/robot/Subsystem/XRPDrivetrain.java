@@ -2,13 +2,14 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot;
+package frc.robot.Subsystem;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.xrp.XRPMotor;
 
 public class XRPDrivetrain {
+  private static XRPDrivetrain drivetrain;
   private static final double kGearRatio =
       (30.0 / 14.0) * (28.0 / 16.0) * (36.0 / 9.0) * (26.0 / 8.0); // 48.75:1
   private static final double kCountsPerMotorShaftRev = 12.0;
@@ -58,4 +59,12 @@ public class XRPDrivetrain {
   public double getRightDistanceInch() {
     return m_rightEncoder.getDistance();
   }
+  public static XRPDrivetrain getInstance(){
+    if (drivetrain==null){
+        drivetrain = new XRPDrivetrain();
+
+    }
+    return drivetrain;
+}
+  
 }
